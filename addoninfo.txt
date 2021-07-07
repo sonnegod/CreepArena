@@ -1,0 +1,11 @@
+"AddonInfo"
+{
+  "TeamCount" "4"
+  "maps"      "creep_arena_mapv1"
+  "IsPlayable"  "1"
+  "creep_arena_mapv1"
+  {
+          "MaxPlayers"                    "4"
+  }
+  
+}
