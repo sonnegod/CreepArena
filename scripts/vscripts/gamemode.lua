@@ -169,9 +169,9 @@ function GameMode:InitGameMode()
 	self.teamNumbers[4] = 7
 	
 	DebugPrint("******BEFORE BASE********")
-	GameMode:SetUpBases()
-	GameMode:SetUpUnitSelectors()
-	GameMode:SetUpOutposts()
+	--0GameMode:SetUpBases()
+	--GameMode:SetUpUnitSelectors()
+	--GameMode:SetUpOutposts()
 
   DebugPrint('[BAREBONES] Done loading Barebones gamemode!\n\n')
 end

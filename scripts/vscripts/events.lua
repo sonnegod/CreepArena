@@ -218,85 +218,19 @@ function GameMode:OnPlayerPickHero(keys)
   self.unitsTTwo[playerID] = 0
   self.unitsTThree[playerID] = 0
   self.unitsTFour[playerID] = 0
+  
+  local currBarrack = Entities:FindByName(nil, "barrack_" .. 1)
 
-  
-  local teamIndex = 1
-  
-  for baseNum = 1, 1 do
-	local teamNum = self.teamNumbers[teamIndex]
-	local baseExisting = Entities:FindByName(nil, "barrack " .. teamIndex)
-	
-	local base = nil
-	
-	local baseEntityNearSpawner = Entities:FindAllInSphere(baseExisting:GetOrigin(), 100)
-	
-	for _, unit in pairs(baseEntityNearSpawner) do
-		if unit:GetName() == "npc_dota_creature" then
-			if unit:GetUnitName() == "base" then
-				base = unit
-			end
-		end
-	end
-	
-	if(base == nil) then
-		print("******** Error finding base for player " .. baseNum)
-	end
-	
-	if(base:GetTeam() == heroEntity:GetTeam()) then
-	
-		local newBasePosition = base:GetOrigin()
-		local newBase = CreateUnitByName("base", newBasePosition, true, heroEntity, heroEntity, heroEntity:GetTeam())
-	
-		newBase:SetOwner(heroEntity)
-		newBase:SetControllableByPlayer(playerID, true)
-		
-		
-		local spawnUnit = newBase:FindAbilityByName("unit_trainer")
-		
-		print(spawnUnit)
-		
-		newBase:CastAbilityNoTarget(spawnUnit, -1)
-	
-	end
-	
-	base:Destroy()
-	
-	
-	
-	local selectorExisting = Entities:FindByName(nil, "unitSelector" .. teamIndex)
-	
-	local selector = nil
-	
-	local selectorEntityNearSpawner = Entities:FindAllInSphere(selectorExisting:GetOrigin(), 100)
-	
-	for _, unit in pairs(selectorEntityNearSpawner) do
-		if unit:GetName() == "npc_dota_creature" then
-			if unit:GetUnitName() == "base_unit_selector" then
-				selector = unit
-			end
-		end
-	end
-	
-	if(selector == nil) then
-		print("******** Error finding base for player " .. baseNum)
-	end
-	
-	if(selector:GetTeam() == heroEntity:GetTeam()) then
-	
-		local newSelectorPosition = selector:GetOrigin()
-		local newSelector = CreateUnitByName("base_unit_selector", newSelectorPosition, true, heroEntity, heroEntity, heroEntity:GetTeam())
-		DebugPrintTable(newSelector)
-		newSelector:SetOwner(heroEntity)
-		newSelector:SetControllableByPlayer(playerID, true)
-	
-	end
-	
-	selector:Destroy()
-	
-	
-  end
-  
 
+  local building = CreateUnitByName("base", currBarrack:GetOrigin(), true, heroEntity, heroEntity, heroEntity:GetTeamNumber())
+    building:SetOwner(heroEntity)
+    building:SetControllableByPlayer(playerID, true)
+    building:SetAbsOrigin(currBarrack:GetOrigin())
+    building:RemoveModifierByName("modifier_invulnerable")
+ 
+  DebugPrint("***************Base should be mine**************")
+
+  DebugPrint(building:GetOwner())
   
 end
 
@@ -308,28 +242,34 @@ function GameMode:SetUpBases()
 	local teamIndex = 1
 	
 	DebugPrint("***************BASE**************")
-	for baseNum = 1, 4 do
+	for teamIndex = 1, 4 do
 		local teamNum = self.teamNumbers[teamIndex]
-		
+    DebugPrint("***************B4**************")
+
 		local currBarrack = Entities:FindByName(nil, "barrack " .. teamIndex)
-		
+    DebugPrint("***************After**************")
+
 		DebugPrint(currBarrack:GetOrigin())
+
+		local makeBarrack = CreateUnitByName("base", currBarrack:GetOrigin(), false, heroEntity, heroEntity, heroEntity:GetTeamNumber())
+    DebugPrint("***************After create**************")
+
+    building:SetOwner(heroEntity)
+    building:SetControllableByPlayer(playerID, true)
 		
-		local makeBarrack = CreateUnitByName("base", currBarrack:GetOrigin(), false, nil, nil, teamNum)
-		
-		
+    DebugPrint("***************After create**************")
+
 		DebugPrint("Accessing Ability Count")
-		DebugPrint(makeBarrack:GetAbilityCount())
-		DebugPrint(makeBarrack:GetAbilityByIndex(0))
+		--DebugPrint(makeBarrack:GetAbilityCount())
+		--DebugPrint(makeBarrack:GetAbilityByIndex(0))
 
 		
 		DebugPrint("Accessing Unit Data")
-		DebugPrintTable(makeBarrack)
+		--DebugPrintTable(makeBarrack)
 
-		makeBarrack:SetTeam(teamNum)
+		--makeBarrack:SetTeam(teamNum)
 		
 		
-		teamIndex = teamIndex + 1
 	end
 	DebugPrint("***************DONE WITH SETUP BASES**************")
 	
