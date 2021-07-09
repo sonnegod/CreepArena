@@ -277,33 +277,30 @@ function GameMode:SetUpBases()
 
 end
 
-function GameMode:SetUpUnitSelectors()
+function GameMode:StartUnitSpawning()
 
-DebugPrint("***************PREPARING TO SETUP Selectors**************")
 
-	local teamIndex = 1
+	Timers:CreateTimer("unitSpawn", {
 	
-	DebugPrint("***************Selectors**************")
-	for baseNum = 1, 4 do
-		local teamNum = self.teamNumbers[teamIndex]
-		
-		local currSelector = Entities:FindByName(nil, "unitSelector" .. teamIndex)
-		
-		
-		local makeSelector = CreateUnitByName("base_unit_selector", currSelector:GetOrigin(), false, nil, nil, teamNum)
+		useGameTime = true,
 		
 	
+		callback = function()
+			
+			if GameMode:CheckUnitCount(playerID, playerOwner) == true then
+				local newUnit = CreateUnitByName(GameMode.playerUnitSelected[playerID] , hCaster:GetOrigin() -75,true, playerOwner,playerOwner,hCaster:GetTeam())
+				newUnit:SetOwner(playerOwner)
+				newUnit:SetControllableByPlayer(playerID, true)
+			end
+			return 1.0
 
-		makeSelector:SetTeam(teamNum)
+		end
 		
-		
-		teamIndex = teamIndex + 1
-	end
-	DebugPrint("***************DONE WITH SETUP Selectors**************")
 	
+	})
+
 
 end
-
 --function to set up the outposts
 function GameMode:SetUpOutposts()
 

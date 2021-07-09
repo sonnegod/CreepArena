@@ -14,7 +14,8 @@
 	
 		// Abilities
         //----------------------------------------------------------------
-		"Ability1"		  "unit_spawner"
+		"Ability1"		  "unit_harpy"
+		"Ability2"		  "unit_kobold"
 	
 	
 		//Armor

@@ -126,6 +126,10 @@ end
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
 
+
+  GameMode:StartUnitSpawning()
+
+
   Timers:CreateTimer(30, -- Start this timer 30 game-time seconds later
     function()
       DebugPrint("This function is called 30 seconds after the game begins, and every 30 seconds thereafter")
@@ -172,7 +176,6 @@ function GameMode:InitGameMode()
 	--0GameMode:SetUpBases()
 	--GameMode:SetUpUnitSelectors()
 	--GameMode:SetUpOutposts()
-
   DebugPrint('[BAREBONES] Done loading Barebones gamemode!\n\n')
 end
 
