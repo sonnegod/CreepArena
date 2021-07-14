@@ -1,14 +1,16 @@
 unit_harpy = class({})
 
 
-function unit_spawner:OnSpellStart()
+function unit_harpy:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local playerOwner = hCaster:GetPlayerOwner()
 	local playerID = hCaster:GetPlayerOwnerID()
 
-
-    self.playerUnitSelected[playerID] = "npc_dota_neutral_harpy_scout"
-
+	if(GameMode.playerUnitSelected[playerID] ~= 'npc_dota_neutral_harpy_scout')
+	then
+    	GameMode.playerUnitSelected[playerID] = "npc_dota_neutral_harpy_scout"
+	end
+	print(GameMode.playerUnitSelected[playerID])
 
 
 end

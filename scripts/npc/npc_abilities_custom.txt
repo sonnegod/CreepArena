@@ -330,6 +330,30 @@
     "BaseClass"           "ability_datadriven"
     "AbilityTextureName"            "rubick_empty1"
   }
+
+    "unit_harpy"
+	{
+		"ScriptFile"			"unit_harpy"
+		"BaseClass"             "ability_lua"
+		"AbilityTextureName"    "rubick_empty1"
+		"MaxLevel"              "1"
+		
+		"AbilityBehavior"    "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		
+		"AbilityCooldown"		"1"
+	}	
+  
+  "unit_kobold"
+	{
+		"ScriptFile"			"unit_kobold"
+		"BaseClass"             "ability_lua"
+		"AbilityTextureName"    "rubick_empty1"
+		"MaxLevel"              "1"
+		
+		"AbilityBehavior"    "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		
+		"AbilityCooldown"		"1"
+	}
   
  
 	
@@ -390,29 +414,7 @@
 		"AbilityCooldown"		"1"
 	}
 	
-  "unit_harpy"
-	{
-		"ScriptFile"			"unit_harpy"
-		"BaseClass"             "ability_lua"
-		"AbilityTextureName"    "holdout_blade_fury"
-		"MaxLevel"              "1"
-		
-		"AbilityBehavior"    "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		
-		"AbilityCooldown"		"1"
-	}	
-  
-  "unit_kobold"
-	{
-		"ScriptFile"			"unit_kobold"
-		"BaseClass"             "ability_lua"
-		"AbilityTextureName"    "holdout_blade_fury"
-		"MaxLevel"              "1"
-		
-		"AbilityBehavior"    "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		
-		"AbilityCooldown"		"1"
-	}
+
 	
 	
 

@@ -230,7 +230,7 @@ function GameMode:OnPlayerPickHero(keys)
  
   DebugPrint("***************Base should be mine**************")
 
-  DebugPrint(building:GetOwner())
+  DebugPrint(playerID)
   
 end
 
@@ -280,24 +280,39 @@ end
 function GameMode:StartUnitSpawning()
 
 
-	Timers:CreateTimer("unitSpawn", {
-	
-		useGameTime = true,
-		
-	
-		callback = function()
-			
-			if GameMode:CheckUnitCount(playerID, playerOwner) == true then
-				local newUnit = CreateUnitByName(GameMode.playerUnitSelected[playerID] , hCaster:GetOrigin() -75,true, playerOwner,playerOwner,hCaster:GetTeam())
-				newUnit:SetOwner(playerOwner)
-				newUnit:SetControllableByPlayer(playerID, true)
-			end
-			return 1.0
 
-		end
-		
-	
-	})
+
+  local teamIndex = 1
+
+  for teamIndex = 1, 4 do
+
+    local playerID = PlayerResource:GetNthPlayerIDOnTeam(GameMode.teamNumbers[teamIndex],1)
+    local playerOwner =   GameMode.players[playerID]
+
+    print(playerID)
+    print(playerOwner)
+
+
+
+    local unitSpawner = Entities:FindByName(nil, "spawner_" .. 1)
+
+    Timers:CreateTimer("unitSpawn_1", {
+    
+      useGameTime = true,
+      
+    
+      callback = function()
+        
+        if GameMode:CheckUnitCount(playerID, -1) == true then
+          local newUnit = CreateUnitByName(GameMode.playerUnitSelected[playerID] , unitSpawner:GetOrigin(),true, playerOwner,playerOwner,playerOwner:GetTeam())
+          newUnit:SetOwner(playerOwner)
+          newUnit:SetControllableByPlayer(playerID, true)
+        end
+        return 1.0
+
+      end
+    })
+  end
 
 
 end
