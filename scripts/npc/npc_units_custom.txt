@@ -1,0 +1,68 @@
+  // Dota Units File
+"DOTAUnits"
+{
+  "Version" "1"
+    
+  "base"
+	{
+		//General
+		"BaseClass"					"npc_dota_creature"
+
+		"Model" 					"models/props_structures/good_barracks_melee001.vmdl"
+		"Level"						"1"
+		"ModelScale" 				"1.0"
+	
+		// Abilities
+        //----------------------------------------------------------------
+		"Ability1"		  "unit_harpy"
+		"Ability2"		  "unit_kobold"
+	
+	
+		//Armor
+		"ArmorPhysical" 			"0"
+		
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"	     
+
+		// Bounds
+		//----------------------------------------------------------------
+		//"BoundsHullName"			"DOTA_HULL_SIZE_BARRACKS"
+		"RingRadius"				"160"
+		"HealthBarOffset"			"270"
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"0"		// Experience earn.
+		"BountyGoldMin"				"500"		// Gold earned min.
+		"BountyGoldMax"				"600"		// Gold earned max.
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"		// Speed.			
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"2500"		// Base health.
+		"StatusHealthRegen"			"0"		// Health regeneration rate.
+		"StatusMana"				"0"			// Base mana.
+		"StatusManaRegen"			"0.0"		// Mana regeneration rate.		 
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"500"		// Range of vision during day light.
+		"VisionNighttimeRange"		"500"		// Range of vision at night time.
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_NEUTRALS"						// Team name.
+		// "CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		// "CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+		// "UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+	}
+	
+	
+	
+	
+}
